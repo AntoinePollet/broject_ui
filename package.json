@@ -1,18 +1,33 @@
 {
   "name": "broject_ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Simple UI library based on headlessUI for vuejs",
-  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/broject_ui.umd.cjs",
+  "module": "./dist/broject_ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/broject_ui.js",
+      "require": "./dist/broject_ui.umd.cjs"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^3.0.5",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@popperjs/core": "^2.11.8",
     "vue": "^3.3.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.5.0"
   }
 }
