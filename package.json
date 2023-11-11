@@ -25,6 +25,7 @@
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@popperjs/core": "^2.11.8",
+    "vite-plugin-dts": "^3.6.3",
     "vue": "^3.3.8"
   },
   "devDependencies": {
