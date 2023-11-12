@@ -2,12 +2,12 @@
   "name": "broject_ui",
   "version": "1.0.3",
   "type": "module",
-  "types": "./dist/main.d.ts",
+  "types": "./dist/index.d.ts",
   "description": "Simple UI library based on headlessUI for vuejs",
   "files": [
     "dist"
   ],
-  "main": "./dist/broject_ui.umd.cjs",
+  "index": "./dist/broject_ui.umd.cjs",
   "module": "./dist/broject_ui.js",
   "exports": {
     ".": {

@@ -4,11 +4,14 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts';
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), dts()],
+  plugins: [vue(), dts({
+    insertTypesEntry: true,
+    rollupTypes: true
+  })],
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'lib/main.ts'),
+      entry: resolve(__dirname, 'lib/index.ts'),
       name: 'broject_ui',
       // the proper extensions will be added
       fileName: 'broject_ui',
@@ -28,12 +31,5 @@ export default defineConfig({
   },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
-  },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `@import './src/styles/index.scss';`
-  //     }
-  //   }
-  // }
+  }
 })
