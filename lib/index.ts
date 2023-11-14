@@ -1,11 +1,13 @@
-import Checkbox from "./components/form/Checkbox.vue";
-import FileInput from "./components/form/FileInput.vue";
-import Input from "./components/form/Input.vue";
-import Switch from "./components/form/Switch.vue";
-import Dialog from "./components/Dialog.vue";
-import Listbox from "./components/Listbox.vue";
-import Popover from "./components/Popover.vue";
-import Menu from "./components/menu/Menu.vue";
-import MenuItem from "./components/menu/MenuItem.vue";
+import BCheckbox from "./components/form/BCheckbox.vue";
+import BFileInput from "./components/form/BFileInput.vue";
+import BInput from "./components/form/BInput.vue";
+import BSwitch from "./components/form/BSwitch.vue";
+import BDialog from "./components/BDialog.vue";
+import BListbox from "./components/BListbox.vue";
+import BPopover from "./components/BPopover.vue";
+import BMenu from "./components/menu/BMenu.vue";
+import BMenuItem from "./components/menu/BMenuItem.vue";
 
-export { Checkbox, FileInput, Input, Switch, Dialog, Listbox, Popover, Menu, MenuItem }
+import "./index.css";
+
+export { BCheckbox, BFileInput, BInput, BSwitch, BDialog, BListbox, BPopover, BMenu, BMenuItem }

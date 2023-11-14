@@ -27,7 +27,7 @@ export default defineConfig({
           vue: 'Vue',
         },
       },
-    },
+    }
   },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
