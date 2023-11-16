@@ -1,8 +1,8 @@
-@import "tailwindcss/base";
+/* @import "tailwindcss/base";
 
 @import "tailwindcss/components";
 
-@import "tailwindcss/utilities";
+@import "tailwindcss/utilities"; */
 
 /* width */
 ::-webkit-scrollbar {
@@ -26,34 +26,31 @@
     background: #7a7878;
 }
 
-@layer components {
-  .btn-primary {
-    @apply justify-center rounded-md bg-primary-500 
-          px-4 py-2 text-sm font-medium text-white 
-          hover:bg-primary-400 focus:outline-none focus-visible:ring-2
-          focus-visible:ring-white focus-visible:ring-opacity-75 flex;
-  }
-
-  .btn-primary.disabled {
-    @apply justify-center rounded-md bg-primary-300 
-          px-4 py-2 text-sm font-medium text-white 
-          focus:outline-none focus-visible:ring-2
-          focus-visible:ring-white focus-visible:ring-opacity-75 flex
-          pointer-events-none;
-  }
-
-  .btn-secondary {
-    @apply justify-center rounded-md bg-secondary-400 px-4 py-2 text-sm 
-          font-medium text-white hover:bg-secondary-400/80 focus:outline-none 
-          focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
-  }
-
-  .checkbox-wrapper-4 .cbx:hover span:first-child {
-    @apply border-primary-500;
-  }
-
-  .checkbox-wrapper-4 .inp-cbx:checked+.cbx span:first-child {
-    @apply border-primary-500 bg-primary-500 animate-[wave];
-  }
+.btn-primary {
+  @apply justify-center rounded-md bg-primary-500 
+        px-4 py-2 text-sm font-medium text-white 
+        hover:bg-primary-400 focus:outline-none focus-visible:ring-2
+        focus-visible:ring-white focus-visible:ring-opacity-75 flex;
 }
 
+.btn-primary.disabled {
+  @apply justify-center rounded-md bg-primary-300 
+        px-4 py-2 text-sm font-medium text-white 
+        focus:outline-none focus-visible:ring-2
+        focus-visible:ring-white focus-visible:ring-opacity-75 flex
+        pointer-events-none;
+}
+
+.btn-secondary {
+  @apply justify-center rounded-md bg-secondary-400 px-4 py-2 text-sm 
+        font-medium text-white hover:bg-secondary-400/80 focus:outline-none 
+        focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
+}
+
+.checkbox-wrapper-4 .cbx:hover span:first-child {
+  @apply border-primary-500;
+}
+
+.checkbox-wrapper-4 .inp-cbx:checked+.cbx span:first-child {
+  @apply border-primary-500 bg-primary-500 animate-[wave];
+}

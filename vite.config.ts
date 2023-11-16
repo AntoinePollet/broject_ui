@@ -16,6 +16,8 @@ export default defineConfig({
       // the proper extensions will be added
       fileName: 'broject_ui',
     },
+    cssCodeSplit: false,
+    cssMinify: true,
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library

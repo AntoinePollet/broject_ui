@@ -12,11 +12,21 @@ Tailwind CSS Integration: All components come with Tailwind CSS styling, ensurin
 
 Full Customizability: Despite the pre-styling, you have complete control over the appearance and behavior of each component through the use of Headless UI's extensive set of props.
 
+Some of the components are built using [poppers.js](https://popper.js.org/) to ensure a good positioning.
+
+
 ## Installation
 
-`
+```bash
 npm install broject_ui
-`
+```
+
+Don't forget to import the corresponding style
+
+```bash
+import "node_modules/broject_ui/dist/style.css"
+```
+
 
 ## Documentation
 
