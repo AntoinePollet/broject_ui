@@ -54,3 +54,5 @@
 .checkbox-wrapper-4 .inp-cbx:checked+.cbx span:first-child {
   @apply border-primary-500 bg-primary-500 animate-[wave];
 }
+
+

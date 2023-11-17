@@ -2,7 +2,7 @@
   "name": "broject_ui",
   "version": "1.0.5",
   "type": "module",
-  "types": "./dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "description": "Simple UI library based on headlessUI for vuejs",
   "repository": {
     "url": "https://github.com/AntoinePollet/broject_ui"
@@ -10,17 +10,20 @@
   "files": [
     "dist"
   ],
-  "index": "./dist/broject_ui.umd.cjs",
-  "module": "./dist/broject_ui.js",
+  "index": "dist/index.umd.cjs",
+  "module": "dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/broject_ui.js",
-      "require": "./dist/broject_ui.umd.cjs"
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./dist": "./dist/index.js",
+    "./dist/index": "./dist/index.js"
   },
   "scripts": {
     "build": "vite build && npm run compile-css && npm run merge-css",
-    "compile-css": "npx tailwindcss build ./lib/build.css --minify",
+    "compile-css": "npx tailwindcss -o ./lib/build.css --minify",
     "merge-css": "node mergeCss.js"
   },
   "author": "",

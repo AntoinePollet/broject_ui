@@ -6,7 +6,8 @@ import dts from 'vite-plugin-dts';
 export default defineConfig({
   plugins: [vue(), dts({
     insertTypesEntry: true,
-    rollupTypes: true
+    rollupTypes: true,
+    outDir: "dist"
   })],
   build: {
     lib: {
@@ -14,7 +15,8 @@ export default defineConfig({
       entry: resolve(__dirname, 'lib/index.ts'),
       name: 'broject_ui',
       // the proper extensions will be added
-      fileName: 'broject_ui',
+      fileName: 'index',
+      formats: ['es', 'umd']
     },
     cssCodeSplit: false,
     cssMinify: true,
