@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { createPopper } from '@popperjs/core';
+import { Modifier, Placement, createPopper } from '@popperjs/core';
 import { ref, nextTick, PropType, toRefs } from 'vue';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { v4 as uuidv4 } from 'uuid';
@@ -83,10 +83,25 @@ const props = defineProps({
   disabled: {
     default: false,
     type: Boolean as PropType<boolean>
+  },
+  popperModifiers: {
+    type: Object as PropType<Array<Partial<Modifier<any, any>>>>,
+    default: [
+      {
+        name: 'offset',
+        options: {
+          offset: [0, 10],
+        },
+      }
+    ]
+  },
+  popperPlacement: {
+    type: String as PropType<Placement>,
+    default: 'bottom-start'
   }
 });
 
-const { buttonTitle, buttonClass, as } = toRefs(props);
+const { buttonTitle, buttonClass, as, popperModifiers, popperPlacement } = toRefs(props);
 
 let popper = ref()
 
@@ -96,15 +111,8 @@ const initializePopper = (open: boolean) => {
 
   if (!open && !popper.value) {
     popper.value = createPopper(popover, popoverMenu, {
-      placement: 'bottom-start',
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 10],
-          },
-        }
-      ],
+      placement: popperPlacement.value,
+      modifiers: popperModifiers.value
     });
     nextTick(() => {
       popper.value.update();

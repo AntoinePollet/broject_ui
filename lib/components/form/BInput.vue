@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { PropType, ref } from 'vue';
 
-const props = defineProps({
+defineProps({
   modelValue: {
     type: String as PropType<string>,
     default: ''
@@ -55,6 +55,5 @@ const value = ref(null);
 const update = (value) => {
   emits('update:modelValue', value)
 }
-
 
 </script>

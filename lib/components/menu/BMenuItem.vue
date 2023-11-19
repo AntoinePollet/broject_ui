@@ -1,15 +1,15 @@
 <template>
   <MenuItem v-slot="{ active }">
-  <button :class="[
-    active ? 'bg-primary-400 text-white' : 'text-gray-900',
-    'group flex w-full items-center rounded-md px-2 py-2 text-sm', itemClass
-  ]">
-    <font-awesome-icon v-if="prependIcon" :icon="'fa-solid ' + prependIcon"
-      :class="[active ? 'text-primary-200' : 'text-primary-400', 'mr-2 h-5 w-5']" aria-hidden="true"></font-awesome-icon>
-    {{ title }}
-    <font-awesome-icon v-if="appendIcon" :icon="'fa-solid ' + appendIcon"
-      :class="[active ? 'text-primary-200' : 'text-primary-400', 'ml-2 h-5 w-5']" aria-hidden="true"></font-awesome-icon>
-  </button>
+    <button :class="[
+      active ? 'bg-primary-400 text-white' : 'text-gray-900',
+      'group flex w-full items-center rounded-md px-2 py-2 text-sm', itemClass
+    ]">
+      <font-awesome-icon v-if="prependIcon" :icon="prependIcon"
+        :class="[active ? 'text-primary-200' : 'text-primary-400', 'mr-2 h-5 w-5']" aria-hidden="true"></font-awesome-icon>
+      {{ title }}
+      <font-awesome-icon v-if="appendIcon" :icon="appendIcon"
+        :class="[active ? 'text-primary-200' : 'text-primary-400', 'ml-2 h-5 w-5']" aria-hidden="true"></font-awesome-icon>
+    </button>
   </MenuItem>
 </template>
 

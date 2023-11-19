@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button type="button" @click="openModal" :disabled="disabled" :class="[disabled ? 'disabled' : '', 'btn-primary']">
+    <button type="button" @click="openModal" :disabled="disabled" :class="[disabled ? 'disabled' : '', 'btn-primary', buttonClass]">
       {{ buttonTitle }}
     </button>
   </div>
@@ -110,6 +110,10 @@ const props = defineProps({
   scrollable: {
     type: Boolean as PropType<boolean>,
     default: true
+  },
+  buttonClass: {
+    type: String as PropType<string>,
+    default: ""
   }
 });
 
