@@ -1,6 +1,6 @@
 {
   "name": "broject_ui",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "typings": "dist/index.d.ts",
   "description": "Simple UI library based on headlessUI for vuejs",
