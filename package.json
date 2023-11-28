@@ -29,6 +29,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@floating-ui/dom": "^1.5.3",
+    "@floating-ui/vue": "^1.0.2",
     "@fortawesome/vue-fontawesome": "^3.0.5",
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",

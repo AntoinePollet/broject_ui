@@ -56,4 +56,19 @@
   @apply border-primary-500 bg-primary-500 animate-[wave];
 }
 
+.floating {
+  width: max-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#arrow {
+  position: absolute;
+  background: #222;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+}
+
 

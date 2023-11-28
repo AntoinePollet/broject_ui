@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Popover v-slot="{ open }" class="relative inline-block text-left" :id="`popover-${uuid}`" :as="as">
-      <PopoverButton @click="initializePopper(open)" :disabled="disabled"
+    <Popover v-slot="{ open }" ref="popover" class="relative inline-block text-left" :id="`popover-${uuid}`" :as="as">
+      <PopoverButton :disabled="disabled" @click="show"
         :class="[disabled ? 'disabled' : '', 'btn-primary', buttonClass]">
         <span>{{ buttonTitle }}</span>
         <ChevronDownIcon :class="open ? '' : 'text-opacity-100'"
@@ -9,13 +9,18 @@
           aria-hidden="true" />
       </PopoverButton>
 
-      <PopoverPanel :id="`popover-menu-${uuid}`" static class="z-50 bg-white">
-        <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
-          enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
-          leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
 
-          <div v-show="open">
-            <div class="w-screen max-w-xl transform px-4 sm:px-0">
+      <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
+        enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
+        leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
+        <PopoverPanel 
+          v-show="open" 
+          ref="popoverMenu" 
+          :id="`popover-menu-${uuid}`" 
+          static 
+          :class="['z-50 bg-white absolute top-0 left-0']"
+        >
+          <div class="w-screen max-w-2xl transform px-4 sm:px-0">
               <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-7">
                 <slot>
                   <div class="relative grid gap-8 bg-white lg:grid-cols-2">
@@ -51,17 +56,16 @@
 
               </div>
             </div>
-          </div>
-        </transition>
-      </PopoverPanel>
+        </PopoverPanel>
+      </transition>
     </Popover>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { Modifier, Placement, createPopper } from '@popperjs/core';
-import { ref, nextTick, PropType, toRefs } from 'vue';
+import { computePosition, shift, offset, flip, autoUpdate, Placement } from '@floating-ui/dom';
+import { ref, PropType, toRefs } from 'vue';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -84,40 +88,43 @@ const props = defineProps({
     default: false,
     type: Boolean as PropType<boolean>
   },
-  popperModifiers: {
-    type: Object as PropType<Array<Partial<Modifier<any, any>>>>,
-    default: [
-      {
-        name: 'offset',
-        options: {
-          offset: [0, 10],
-        },
-      }
-    ]
+  floatingPlacement: {
+      type: String as PropType<Placement>,
+      default: 'bottom-start'
   },
-  popperPlacement: {
-    type: String as PropType<Placement>,
-    default: 'bottom-start'
+  floatingPadding: {
+      type: Number as PropType<number>,
+      default: 10
+  },
+  floatingOffset: {
+    type: Number as PropType<number>,
+    default: 10
   }
 });
 
-const { buttonTitle, buttonClass, as, popperModifiers, popperPlacement } = toRefs(props);
+const { buttonTitle, buttonClass, as, floatingPadding, floatingPlacement, floatingOffset } = toRefs(props);
 
-let popper = ref()
+const popover = ref();
+const popoverMenu = ref();
 
-const initializePopper = (open: boolean) => {
-  const popover = document.querySelector(`#popover-${uuid}`) as Element;
-  const popoverMenu = document.querySelector(`#popover-menu-${uuid}`) as HTMLElement;
-
-  if (!open && !popper.value) {
-    popper.value = createPopper(popover, popoverMenu, {
-      placement: popperPlacement.value,
-      modifiers: popperModifiers.value
+const calculatePosition = () => {
+  computePosition(popover.value.el, popoverMenu.value.el, {
+    placement: floatingPlacement.value,
+    middleware: [offset(floatingOffset.value), flip(), shift({ padding: floatingPadding.value })]
+  }).then(({ x, y }) => {
+      Object.assign(popoverMenu.value.el.style, {
+      left: `${x}px`,
+      top: `${y}px`,
     });
-    nextTick(() => {
-      popper.value.update();
-    })
-  }
+  })
+}
+
+const show = async () => {
+  autoUpdate(
+    popover.value.el, 
+    popoverMenu.value.el,
+    calculatePosition
+  );
 }
 
 const solutions = [
