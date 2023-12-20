@@ -12,6 +12,8 @@ import BTooltip from "./components/BTooltip.vue";
 import BMenu from "./components/menu/BMenu.vue";
 import BMenuItem from "./components/menu/BMenuItem.vue";
 import BButton from "./components/form/BButton.vue";
+import BTable from "./components/BTable.vue";
+import BTableBis from "./components/BTableBis.vue";
 
 import "./index.css";
 
@@ -29,5 +31,7 @@ export {
     BTextarea, 
     BRadio, 
     BAvatar,
-    BTooltip
+    BTooltip,
+    BTable,
+    BTableBis
 }

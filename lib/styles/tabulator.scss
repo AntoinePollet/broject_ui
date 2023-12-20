@@ -1,0 +1,63 @@
+@import "tabulator-tables/dist/css/tabulator.min.css";
+
+$height: 3rem !default;
+
+.tabulator {
+  border-radius: 5px;
+  border: none;
+  .tabulator-header {
+    height: $height;
+    text-transform: uppercase;
+    font-weight: 500;
+    @apply border-b;
+    .tabulator-header-contents {
+      @apply bg-primary-200;
+      height: $height;
+      .tabulator-headers {
+        height: $height !important;
+        .tabulator-col {
+          @apply bg-primary-200 text-black;
+          height: $height !important;
+          justify-content: center;
+          border-right: none;
+          &:hover {
+            @apply bg-primary-100;
+          }
+          .tabulator-col-content {
+            padding-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+  .tabulator-row {
+    background-color: white;
+    min-height: $height;
+    &:hover {
+      @apply bg-gray-50;
+    }
+    &:not(:last-child) {
+      @apply border-b;
+    }
+    .tabulator-cell {
+      vertical-align: middle;
+      padding-left: 1rem;
+      height: $height;
+      border-right: none;
+    }
+  }
+}
+
+.tabulator-col[aria-sort="none"] .tabulator-col-sorter svg {
+  @apply fill-gray-500;
+}
+
+/* Define the style when the column is sorted in ascending order */
+.tabulator-col[aria-sort="ascending"] .tabulator-col-sorter svg {
+  @apply fill-primary-800;
+}
+
+/* Define the style when the column is sorted in descending order */
+.tabulator-col[aria-sort="descending"] .tabulator-col-sorter svg {
+  @apply fill-primary-800;
+}

@@ -9,6 +9,11 @@ export default defineConfig({
     rollupTypes: true,
     outDir: "dist"
   })],
+  css: {
+    preprocessorOptions: {
+      
+    }
+  },
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
@@ -23,12 +28,13 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['vue'],
+      external: ['vue', 'tabulator-tables'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
           vue: 'Vue',
+          'tabulator-tables': 'tabulator-tables'
         },
       },
     }

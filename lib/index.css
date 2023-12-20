@@ -1,29 +1,25 @@
-/* @import "tailwindcss/base";
-
-@import "tailwindcss/components";
-
-@import "tailwindcss/utilities"; */
+@import "./styles/index.scss";
 
 /* width */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
+  background: #888;
+  border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #7a7878;
+  background: #7a7878;
 }
 
 .btn-primary {
@@ -52,7 +48,7 @@
   @apply border-primary-500;
 }
 
-.checkbox-wrapper-4 .inp-cbx:checked+.cbx span:first-child {
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
   @apply border-primary-500 bg-primary-500 animate-[wave];
 }
 
@@ -70,5 +66,3 @@
   height: 8px;
   transform: rotate(45deg);
 }
-
-
